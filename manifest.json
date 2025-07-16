@@ -1,0 +1,17 @@
+{
+  "name": "GRT Jewellery Indent",
+  "short_name": "GRT Indent",
+  "start_url": "/login",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a2a40",
+  "description": "An application for GRT Jewellers to manage and catalog jewellery designs.",
+  "icons": [
+    {
+      "src": "/static/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
