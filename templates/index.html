@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jewellery Indent System - Welcome</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1a2a40"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #f4f7f6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .left-panel {
+            flex-basis: 50%;
+            background: linear-gradient(135deg, #1a2a40, #3a506b);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .left-panel h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(45deg, #ffd700, #f0e68c, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .left-panel .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-top: 15px;
+            max-width: 400px;
+        }
+
+        .left-panel .jewellery-image {
+            margin-top: 50px;
+            max-width: 300px;
+            filter: drop-shadow(5px 10px 20px rgba(0, 0, 0, 0.5));
+        }
+        
+        .right-panel {
+            flex-basis: 50%;
+            padding: 4vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        h2 { 
+            text-align: center; 
+            color: #333; 
+            font-weight: 600; 
+            margin-bottom: 30px; 
+            font-size: 2.2rem;
+        }
+        
+        .form-group { margin-bottom: 25px; }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #444;
+            font-size: 1.1rem;
+        }
+        
+        input[type="text"], input[type="file"], select {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+        input:focus, select:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); outline: none; }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        button[type="submit"]:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3); }
+        
+        .alert { padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center; font-weight: 600; }
+        .alert-success { color: #155724; background-color: #d4edda; }
+        .nav-button-container { text-align: center; margin-bottom: 25px; display: flex; justify-content: center; gap: 15px; }
+        .nav-button { padding: 12px 25px; background-color: #f0f0f0; color: #333; text-decoration: none; border-radius: 8px; font-weight: 600; border: 1px solid #ddd; font-size: 1rem; }
+        .nav-button:hover { background-color: #e5e5e5; }
+        
+        /* Logout பட்டனுக்கான புதிய ஸ்டைல் */
+        .nav-button[href="/logout"] {
+            background-color: #e53e3e;
+            color: white;
+            border-color: #e53e3e;
+        }
+        .nav-button[href="/logout"]:hover {
+            background-color: #c53030;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-panel">
+            <h1>Save Your Designs with Ease</h1>
+            <p class="subtitle">The All-in-One Jewellery Indent System</p>
+            <img src="https://i.imgur.com/G20Y1R5.png" alt="Jewellery" class="jewellery-image">
+        </div>
+
+        <div class="right-panel">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}{% for category, message in messages %}<div class="alert alert-{{ category }}">{{ message }}</div>{% endfor %}{% endif %}
+            {% endwith %}
+
+            <!-- Logout பட்டன் இங்கே சேர்க்கப்பட்டுள்ளது -->
+            <div class="nav-button-container">
+                <a href="/gallery" class="nav-button">View Product Gallery →</a>
+                <a href="/logout" class="nav-button">Logout</a>
+            </div>
+
+            <h2>Save New Jewellery Design</h2>
+            
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="product_image">1. Product Image:</label>
+                    <input type="file" id="product_image" name="product_image" required>
+                </div>
+                <div class="form-group">
+                    <label for="product_name">2. Product Name:</label>
+                    <select id="product_name" name="product_name" required>
+                        <option value="" disabled selected>-- Select a Product Type --</option>
+                        <option value="necklace">Necklace</option>
+                        <option value="oriana necklace">Oriana Necklace</option>
+                        <option value="vintage and ethinic">Vintage and Ethnic</option>
+                        <option value="thirumangalyam">Thirumangalyam</option>
+                        <option value="chain">Chain</option>
+                        <option value="short chain">Short Chain</option>
+                        <option value="long chain">Long Chain</option>
+                        <option value="bb chain">BB Chain</option>
+                        <option value="double row">Double Row</option>
+                        <option value="mugappu chain">Mugappu Chain</option>
+                        <option value="rings">Rings</option>
+                        <option value="wedding ring">Wedding Ring</option>
+                        <option value="earrings">Earrings</option>
+                        <option value="stud">Stud</option>
+                        <option value="jimikki">Jimikki</option>
+                        <option value="drops">Drops</option>
+                        <option value="dollar">Dollar</option>
+                        <option value="bangle">Bangle</option>
+                        <option value="single bangle">Single Bangle</option>
+                        <option value="baby products">Baby Products</option>
+                        <option value="18kt product">18kt Product</option>
+                        <option value="order product">Order Product</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product_code">3. Product Code:</label>
+                    <input type="text" id="product_code" name="product_code" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight_band">4. Weight Band (e.g., 10-15g):</label>
+                    <input type="text" id="weight_band" name="weight_band">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
